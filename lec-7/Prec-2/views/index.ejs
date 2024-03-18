@@ -5,10 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <style>
-    h1{
+    h1,h2{
       text-align: center;
       font-size: 46px;
     }
+
     table{
       font-size: 24px;
       
@@ -17,6 +18,37 @@
 </head>
 <body>
   <h1>User DataBase</h1>
+  
+  <form method="post" action="/insertdata">
+    <table border="" cellspacing="0" cellpadding="5" align="center">
+      <tr>
+        <td>User Id:- </td>
+        <td><input type="number" name="userid"></td>
+      </tr>
+      <tr>
+        <td>User Name:- </td>
+        <td><input type="text" name="name"></td>
+      </tr>
+      <tr>
+        <td>Email Id:- </td>
+        <td><input type="email" name="email"></td>
+      </tr>
+      <tr>
+        <td>Password</td>
+        <td><input type="password" name="password"></td>
+      </tr>
+      <tr>
+        <td>Phone No:- </td>
+        <td><input type="number" name="phone"></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><input type="submit"></td>
+      </tr>
+    </table>
+  </form>
+
+  <h2>Show Data</h2>
   <table border="" cellspacing="0" cellpadding="5" align="center">
     <tr>
       <th>User Id</th>
@@ -25,6 +57,19 @@
       <th>Password</th>
       <th>Phone No</th>
     </tr>
+
+      <% student.map((val)=>{ %>
+        
+        <tr>
+          <td><%= val.userid %></td>
+          <td><%= val.name %></td>
+          <td><%= val.email %></td>
+          <td><%= val.password %></td>
+          <td><%= val.phone %></td>
+        </tr>
+
+      <% }) %>
+
   </table>
 </body>
 </html>

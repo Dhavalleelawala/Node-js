@@ -4,8 +4,61 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <style>
+    table{
+      font-size: 21px;
+      font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    }
+  </style>
 </head>
 <body>
-  <h1>Hello page is loade..</h1>
+
+  <h1 align="center">add student new recodes</h1>
+
+  <form method="post" action="/insertdata">
+    <table align="center" cellspacing="0" cellpadding="2" border="">
+      <tr>
+        <td>Roll No: </td>
+        <td><input type="number" name="rollno"></td>
+      </tr>
+      <tr>
+        <td>Name: </td>
+        <td><input type="text" name="name"></td>
+      </tr>
+      <tr>
+        <td>coures: </td>
+        <td><input type="text" name="coures"></td>
+      </tr>
+      <tr>
+        <td>Grade: </td>
+        <td><input type="text" name="grade"></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><input type="submit"></td>
+      </tr>
+    </table>
+  </form>
+
+
+  <h2 align="center">Student DataBase</h2>
+  <table align="center" cellspacing="0" cellpadding="2" border>
+    <tr>
+      <th>Roll No</th>
+      <th>Name</th>
+      <th>course</th>
+      <th>Grade</th>
+    </tr>
+
+    <% student.map((val)=>{ %>
+        <tr>
+          <td><%= val.rollno %></td>
+          <td><%= val.name %></td>
+          <td><%= val.coures %></td>
+          <td><%= val.grade  %></td>
+        </tr>
+    <% }) %>
+
+  </table>
 </body>
 </html>
