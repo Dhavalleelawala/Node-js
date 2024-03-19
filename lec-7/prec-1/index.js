@@ -4,7 +4,7 @@ const port = 8040;
 
 const app = express();
 app.use(express.urlencoded());
-const studentData = [
+let studentData = [
   {
     rollno :1,
     name : "Kunal",
@@ -56,6 +56,51 @@ app.post('/insertdata',(req,res)=>{
   res.redirect('back');
 
 });
+
+app.get('/deleteData',(req,res)=>{
+  let roll = req.query.rollno;
+
+  let reselt= studentData.filter((val)=>{
+    //console.log(val);
+    return val.rollno != roll;
+  });
+
+  studentData = reselt;
+  return res.redirect('back');
+});
+ 
+app.get('/editData',(req,res)=>{
+  let roll = req.query.rollno;
+  let data = studentData.filter((val)=>{
+    return val.rollno == roll;
+  })
+
+
+  return res.render('edit',{
+    data : data[0]
+    
+  });
+})
+
+app.post('/editdata',(req,res)=>{
+  
+  let editid = req.body.editid;
+
+  let updatData = studentData.filter((currData)=>{
+    if(currData.rollno == editid){
+    currData.rollno = req.body.editid;
+    currData.name = req.body.name;
+    currData.coures = req.body.coures;
+    currData.grade = req.body.grade;
+    }
+
+    return currData;
+  });
+
+  studentData = updatData;
+  res.redirect('/');
+
+}); 
 
 app.listen(port,(err)=>{
   if(err){

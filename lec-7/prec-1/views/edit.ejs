@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1 align="center">Edit student recodes</h1>
+  
+  <form method="post" action="/editdata">
+    <input type="hidden" name="editid" value="<%= data.rollno %>">
+    <table align="center" cellspacing="0" cellpadding="2" border="">
+      <tr>
+        <td>Roll No: </td>
+        <td><input disabled type="number" name="rollno" value="<%= data.rollno %>"></td>
+      </tr>
+      <tr>
+        <td>Name: </td>
+        <td><input type="text" name="name" value="<%= data.name %>"></td>
+      </tr>
+      <tr>
+        <td>coures: </td>
+        <td><input type="text" name="coures" value="<%= data.coures %>"></td>
+      </tr>
+      <tr>
+        <td>Grade: </td>
+        <td><input type="text" name="grade" value="<%= data.grade %>"></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><input type="submit" value="Edit"></td>
+      </tr>
+    </table>
+  </form>
+
+</body>
+</html>

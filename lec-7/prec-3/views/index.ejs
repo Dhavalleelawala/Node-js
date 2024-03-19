@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    table{
+      font-size: 26px;
+    }
+    h1,h2{
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  
+  <h1>Employee DATABASE</h1>
+  <form method="post" action="/insertdata">
+    <table border cellspacing="0" cellpadding="2" align="center">
+      <tr>
+        <td>E id</td>
+        <td><input type="number" name="eid"></td>
+      </tr>
+      <tr>
+        <td>E Name</td>
+        <td><input type="text" name="ename"></td>
+      </tr>
+      <tr>
+        <td>B Salary</td>
+        <td><input type="number" name="bsalary"></td>
+      </tr>
+      <tr>
+        <td>HRA</td>
+        <td><input type="number" name="hra"></td>
+      </tr>
+      <tr>
+        <td>Total</td>
+        <td><input type="number" name="total"></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><input type="submit"></td>
+      </tr>
+    </table>
+  </form>
+
+  <h2>Employee Data</h2>
+  <table border cellspacing="0" cellpadding="2" align="center">
+    <tr>
+      <th>E id</th>
+      <th>E Name</th>
+      <th>Basic Salary</th>
+      <th>HRA</th>
+      <th>Total</th>
+    </tr>
+
+    <% emp.map((val)=>{ %>
+
+      <tr>
+        <td><%= val.eid%></td>
+        <td><%= val.ename %></td>
+        <td><%= val.bsalary %></td>
+        <td><%= val.hra %></td>
+        <td><%= val.total %></td>
+        <td>
+          <a href="javascript:void(0)">Delete</a>
+          <a href="javascript:void(0)">Edit</a>
+        </td>
+      </tr>
+
+    <%  }) %>
+
+  </table>
+
+</body>
+</html>

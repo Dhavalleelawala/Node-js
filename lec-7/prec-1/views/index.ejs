@@ -9,6 +9,14 @@
       font-size: 21px;
       font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     }
+    a{
+      text-decoration: none;
+      display: inline-block;
+      background-color: #264972;
+      color: #fff;
+      padding: 5px;
+      border-radius: 10px;
+    }
   </style>
 </head>
 <body>
@@ -19,19 +27,19 @@
     <table align="center" cellspacing="0" cellpadding="2" border="">
       <tr>
         <td>Roll No: </td>
-        <td><input type="number" name="rollno"></td>
+        <td><input type="number" name="rollno" value=""></td>
       </tr>
       <tr>
         <td>Name: </td>
-        <td><input type="text" name="name"></td>
+        <td><input type="text" name="name" value=""></td>
       </tr>
       <tr>
         <td>coures: </td>
-        <td><input type="text" name="coures"></td>
+        <td><input type="text" name="coures" value=""></td>
       </tr>
       <tr>
         <td>Grade: </td>
-        <td><input type="text" name="grade"></td>
+        <td><input type="text" name="grade" value=""></td>
       </tr>
       <tr>
         <td></td>
@@ -42,12 +50,13 @@
 
 
   <h2 align="center">Student DataBase</h2>
-  <table align="center" cellspacing="0" cellpadding="2" border>
+  <table align="center" cellspacing="0" cellpadding="2" border width="80%">
     <tr>
       <th>Roll No</th>
       <th>Name</th>
       <th>course</th>
       <th>Grade</th>
+      <th>Action</th>
     </tr>
 
     <% student.map((val)=>{ %>
@@ -56,6 +65,10 @@
           <td><%= val.name %></td>
           <td><%= val.coures %></td>
           <td><%= val.grade  %></td>
+          <td width="120px">
+            <a href="/deleteData?rollno=<%= val.rollno %>">Delete</a>
+            <a href="/editData?rollno=<%= val.rollno%>">Edit</a>
+          </td>
         </tr>
     <% }) %>
 
