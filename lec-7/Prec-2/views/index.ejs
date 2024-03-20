@@ -11,8 +11,35 @@
     }
 
     table{
-      font-size: 24px;
-      
+      font-size: 24px; 
+    }
+
+    .table2{
+      width:80%;
+    }
+
+    .btn{
+      display: inline-block;
+      font-weight: 400;
+      line-height: 1.5;
+      color: #212529;
+      text-align: center;
+      text-decoration: none;
+      background-color: transparent;
+      border: 1px solid transparent;
+      padding: 0.375rem 0.75rem;
+      font-size: 1rem;
+      border-radius: 0.25rem;
+    }
+    .btn-danger{
+      color: #fff;
+      background-color: #dc3545;
+      border-color: #dc3545;
+    }
+    .btn-warning{
+      color: #000;
+      background-color: #ffc107;
+      border-color: #ffc107;
     }
   </style>
 </head>
@@ -49,13 +76,14 @@
   </form>
 
   <h2>Show Data</h2>
-  <table border="" cellspacing="0" cellpadding="5" align="center">
+  <table class="table2" border="" cellspacing="0" cellpadding="5" align="center">
     <tr>
       <th>User Id</th>
       <th>User Name</th>
       <th>Email</th>
       <th>Password</th>
       <th>Phone No</th>
+      <th>Action</th>
     </tr>
 
       <% student.map((val)=>{ %>
@@ -66,6 +94,10 @@
           <td><%= val.email %></td>
           <td><%= val.password %></td>
           <td><%= val.phone %></td>
+          <td>
+            <a href="/deleteData?userid=<%= val.userid %>" class="btn btn-danger">Delete</a>
+            <a href="/editData?userid=<%= val.userid %>" class="btn btn-warning">Edit</a>
+          </td>
         </tr>
 
       <% }) %>
