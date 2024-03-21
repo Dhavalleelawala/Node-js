@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <form action="/insertData" method="post">
+  <table border>
+    <tr>
+      <th>Name</th>
+      <td><input type="text" name="name"></td>
+    </tr>
+    <tr>
+      <th>Email</th>
+      <td><input type="email" name="email"></td>
+    </tr>
+    <tr>
+      <th>Password</th>
+      <td><input type="password" name="password"></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><input type="submit" value="submit"></td>
+    </tr>
+  </table>
+
+  <br><br>
+  <table border="">
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Password</th>
+      <th><a href="/deleteData">Delete</a></th>
+    </tr>    
+
+    <% record.map((val)=>{ %>
+      <tr>
+        <td><%=val.name%></td>
+        <td><%=val.email%></td>
+        <td><%=val.password%></td>
+      </tr>
+    <% }) %>
+
+  </table>
+ </form>
+</body>
+</html>
