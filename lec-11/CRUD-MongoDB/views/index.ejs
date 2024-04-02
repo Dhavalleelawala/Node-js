@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+   .insert-data tr{
+      text-align: left;
+    }
+  </style>
+</head>
+<body>
+  
+  <form action="/insertData" method="post" enctype="multipart/form-data">
+    <table class="insert-data" border cellspacing="0" cellpadding="5">
+      <caption><h1>Employees CRUD mongoDB.</h1></caption>
+      <tr>
+        <th>Name:-</th>
+        <td><input type="text" name="name"></td>
+      </tr>
+      <tr>
+        <th>Email:-</th>
+        <td><input type="email" name="email"></td>
+      </tr>
+      <tr>
+        <th>Password:-</th>
+        <td><input type="text" name="password"></td>
+      </tr>
+      <tr>
+        <th>Gender:-</th>
+        <td>
+          <input type="radio" name="gender" value="Male">Male
+          <input type="radio" name="gender" value="Female">female
+        </td>
+      </tr>
+      <tr>
+        <th>Hobby:-</th>
+        <td>
+          <input type="checkbox" name="hobby" value="Dance">Dance
+          <input type="checkbox" name="hobby" value="Painting">Painting
+          <input type="checkbox" name="hobby" value="Photography">Photography
+          <input type="checkbox" name="hobby" value="Drawing">Drawing
+        </td>
+      </tr>
+      <tr>
+        <th>Phone No:-</th>
+        <td><input type="text" name="phone"></td>
+      </tr>
+      <tr>
+        <th>City:-</th>
+        <td>
+          <select name="city">
+            <option value="">--select City--</option>
+            <% 
+            
+              let city = ["Ahmedabad","Chennai","Kolkata","Surat","Indore"];  
+              city.map((val)=>{
+            
+            %>
+            <option value="<%= val %>"><%= val %></option>
+            <% }) %>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <th>Image</th>
+        <td><input type="file" name="image"></td>
+      </tr>
+      <tr>
+        <th></th>
+        <td><input type="submit" value="submit"></td>
+      </tr>
+    </table>
+
+    <br><br>
+    <table class="show-data" border cellspacing="0" width="80%" cellpadding="5">
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Password</th>
+        <th>Gender</th>
+        <th>Hobby</th>
+        <th>Phone</th>
+        <th>City</th>
+        <th>Image</th>
+        <th>Action</th>
+      </tr>
+
+      <% empData.map((val)=>{ %>
+        <tr>
+          <td><%= val.name  %></td>
+          <td><%= val.email %></td>
+          <td><%= val.password %></td>
+          <td><%= val.gender %></td>
+          <td><%= val.hobby %></td>
+          <td><%= val.phone %></td>
+          <td><%= val.city %></td>
+          <td>
+            <img src="<%= val.image%>" width="100px" height="100px">
+          </td>
+          <td>
+            <a href="/deleteData?id=<%= val.id %>">Delete</a>
+            <a href="/editData?id=<%= val.id %>">Edit</a>
+          </td>
+        </tr>
+      <% }) %>
+
+
+    </table>
+  </form>
+
+</body>
+</html>

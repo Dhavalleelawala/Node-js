@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <form action="/insertData" method="post" enctype="multipart/form-data">
+    <table class="insert-data" border cellspacing="0" cellpadding="5">
+      <caption><h1>Employees CRUD mongoDB.</h1></caption>
+      <tr>
+        <th>Name:-</th>
+        <td>
+          <input type="hidden" name="editId" value="<%= single.id %>">
+          <input type="text" name="name" value="<%= single.name %>">
+        </td>
+      </tr>
+      <tr>
+        <th>Email:-</th>
+        <td><input type="email" name="email" value="<%= single.email %>"></td>
+      </tr>
+      <tr>
+        <th>Password:-</th>
+        <td><input type="text" name="password" value="<%= single.password %>"></td>
+      </tr>
+      <tr>
+        <th>Gender:-</th>
+        <td>
+          <input type="radio"  <% if(single.gender == "Male"){ %> checked <% } %> name="gender" value="Male">Male
+          <input type="radio" <% if(single.gender == "Female"){ %> checked <% } %> name="gender" value="Female">female
+        </td>
+      </tr>
+      <tr>
+        <th>Hobby:-</th>
+        <td>
+          <input type="checkbox" <% if(single.hobby.includes("Dance")){ %> checked <% } %> name="hobby" value="Dance">Dance
+          <input type="checkbox" <% if(single.hobby.includes("Painting")){ %> checked <% } %> name="hobby" value="Painting">Painting
+          <input type="checkbox" <% if(single.hobby.includes("Photography")){ %> checked <% } %> name="hobby" value="Photography">Photography
+          <input type="checkbox" <% if(single.hobby.includes("Drawing")){%> checked <%} %> name="hobby" value="Drawing">Drawing
+        </td>
+      </tr>
+      <tr>
+        <th>Phone No:-</th>
+        <td><input type="text" name="phone" value="<%= single.phone %>"></td>
+      </tr>
+      <tr>
+        <th>City:-</th>
+        <td>
+          <select name="city">
+            <option value="">--select City--</option>
+            <% 
+            
+              let city = ["Ahmedabad","Chennai","Kolkata","Surat","Indore"];  
+              city.map((val)=>{
+            
+            %>
+            <option <% if(single.city == val){ %> selected <% } %> value="<%= val %>"> <%= val %></option>
+            <% }) %>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <th>Image</th>
+        <td>
+          <input type="file" name="image" id="">
+          <img src="<%= single.image %>" width="100px" height="100px">
+        </td>
+      </tr>
+      <tr>
+        <th></th>
+        <td><input type="submit" value="submit"></td>
+      </tr>
+    </table>
+
+  </form>
+
+</body>
+</html>
